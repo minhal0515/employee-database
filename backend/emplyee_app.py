@@ -7,10 +7,10 @@ CORS(app)
 
 def get_connection():
     return mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='12345679',
-        database='engineers'
+        host=os.getenv("DB_HOST", "localhost"),
+        user=os.getenv("DB_USER", "root"),
+        password=os.getenv("DB_PASSWORD", ""),
+        database=os.getenv("DB_NAME", "engineers")
     )
 
 @app.route('/api/employees')
